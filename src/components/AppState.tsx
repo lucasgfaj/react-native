@@ -19,7 +19,6 @@ export default function AppStateLoad() {
 
   return (
     <View>
-      <Text>AppState</Text>
     </View>
   );
 }
