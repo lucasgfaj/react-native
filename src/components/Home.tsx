@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 
-const PlaceholderImage = `https://res.cloudinary.com/duposs86e/image/upload/v1743548261/FEuIMjbX0AE8WE7_y9r2pf.jpg`
+const PlaceholderImage = `https://res.cloudinary.com/duposs86e/image/upload/v1744754136/utfpr_jjpekv.png`
 
 export default function Home() {
   return (
@@ -23,9 +23,9 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     image: {
-      top: 100,
-      width: 320,
-      height: 440,
+      top: 170,
+      width: 180,
+      height: 200,
       borderRadius: 18,
     },
   });
