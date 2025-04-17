@@ -6,6 +6,8 @@ export default function Login() {
 
     const router = useRouter();
 
+    const getRandomId = () => Math.floor(Math.random() * 1000);
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -33,7 +35,8 @@ export default function Login() {
         console.log("isValid", passwordIsValid);
 
         if (passwordIsValid) {
-          router.push('/tabs');
+          const randomId: number = getRandomId(); // Gerar um ID aleatório
+          router.push(`/tabs/feed?id=${randomId}`);
       }
 
         setUsername('');
