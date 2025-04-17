@@ -1,7 +1,10 @@
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
 import React, { isValidElement, useEffect, useState } from 'react'
+import { useRouter } from 'expo-router';
 
 export default function Login() {
+
+    const router = useRouter();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -18,7 +21,7 @@ export default function Login() {
         return minLength && hasLetter && hasNumber && hasSpecialChar;
       };
 
-      const isValid = passwordMeetsCriteria(password) && password === confirmPassword;
+      const isValid = passwordMeetsCriteria(password) ; //&& password === confirmPassword
       setPasswordIsValid(isValid);
       
     }, [password, confirmPassword]);
@@ -28,6 +31,10 @@ export default function Login() {
         console.log("Password", password);
         console.log("Password", confirmPassword);
         console.log("isValid", passwordIsValid);
+
+        if (passwordIsValid) {
+          router.push('/tabs');
+      }
 
         setUsername('');
         setPassword('');
@@ -39,7 +46,7 @@ export default function Login() {
       <Text style={styles.title}>Login</Text>
       <TextInput style={styles.input} placeholder='Username' value={username} onChangeText={setUsername} />
       <TextInput style={styles.input} placeholder='Password' value={password} onChangeText={setPassword} secureTextEntry />
-      <TextInput style={styles.input} placeholder='Confirm Password' value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry />
+      {/* <TextInput style={styles.input} placeholder='Confirm Password' value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry /> */}
         <Button title='Login'  disabled={!passwordIsValid}   onPress={handleLogin} />
     </View>
   );
