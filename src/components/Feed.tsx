@@ -1,6 +1,6 @@
-import { useGlobalSearchParams } from 'expo-router';
+import { useGlobalSearchParams, useRouter } from 'expo-router';
 import React from 'react'
-import { View, Text, FlatList, StyleSheet } from 'react-native'
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 
 type Post = {
   id: string
@@ -16,21 +16,23 @@ const posts: Post[] = [
 ]
 
 export default function Feed() {
-
   const params = useGlobalSearchParams<{ id: string }>();
   const { id } = params;
+  const router = useRouter();
 
   const renderItem = ({ item }: { item: Post }) => (
-    <View style={styles.post}>
-      <Text style={styles.user}>{item.user}</Text>
-      <Text style={styles.content}>{item.content}</Text>
-      <Text style={styles.time}>{item.time}</Text>
-    </View>
+    <TouchableOpacity onPress={() => router.push(`/post/${item.id}`)}>
+      <View style={styles.post}>
+        <Text style={styles.user}>{item.user}</Text>
+        <Text style={styles.content}>{item.content}</Text>
+        <Text style={styles.time}>{item.time}</Text>
+      </View>
+    </TouchableOpacity>
   )
 
   return (
     <View style={styles.container}>
-      <Text>ID Season:{id}</Text>
+      <Text>ID Season: {id}</Text>
       <FlatList
         data={posts}
         keyExtractor={(item) => item.id}
