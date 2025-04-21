@@ -8,8 +8,8 @@ export default function Login() {
 
     const getRandomId = () => Math.floor(Math.random() * 1000);
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('Lucas');
+    const [password, setPassword] = useState('Lu032013812321!@##@#!');
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const [passwordIsValid, setPasswordIsValid] = useState(false);
